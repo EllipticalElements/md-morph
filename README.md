@@ -1,4 +1,4 @@
-# MD-COMPONENT
+# MD-MORPH
 
 
 
@@ -6,7 +6,7 @@
 
 ``` bash
 
-bower install md-component --save
+bower install md-morph --save
 
 ```
 
@@ -14,9 +14,9 @@ bower install md-component --save
 
 ```html
 
-<link rel="import" href="bower_components/md-component/md-component.html">
+<link rel="import" href="bower_components/md-morph/md-morph.html">
 
-<md-component></md-component>
+<md-morph></md-morph>
 ```
 
 
