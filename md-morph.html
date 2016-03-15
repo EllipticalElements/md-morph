@@ -1,29 +1,59 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../elliptical-polymer-behaviors/component-behavior.html">
-
-<dom-module id="md-component">
-    <style></style>
-    <template>
-    </template>
-</dom-module>
+<link rel="import" href="../sass-animations/fade.html">
+<style>
+    md-morph{
+        position:relative;
+    }
+    md-morph .hide{
+        display:none;
+    }
+</style>
 <script>
 
     Polymer({
 
-        is: 'md-component',
+        is: 'md-morph',
 
         behaviors:[Elliptical.ComponentBehavior],
 
         properties: {
-           
+            _default:{
+                type:Array,
+                value:null
+            },
+            _toggle:{
+                type:Array,
+                value:null
+            }
         },
-        
+
         listeners:{
-            
+
         },
 
         ready:function(){
-            
+            this._toggle=this.element.find('[toggle]');
+            this._default=this.element.find('[default]');
+        },
+
+        toggle:function(){
+            var _default =this._default;
+            var toggle=this._toggle;
+            var self=this;
+            this._transition(_default,{preset:'fadeOut',duration:500},function(){
+                self._transition(toggle,{preset:'fadeIn'});
+            });
+
+        },
+
+        reset:function(){
+            var _default =this._default;
+            var toggle=this._toggle;
+            var self=this;
+            this._transition(toggle,{preset:'fadeOut'},function(){
+                self._transition(_default,{preset:'fadeIn'});
+            });
         }
     });
 
